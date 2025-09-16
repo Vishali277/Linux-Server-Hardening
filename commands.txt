@@ -1,0 +1,23 @@
+# 1. Initial User Setup
+adduser testuser
+usermod -aG sudo testuser
+
+# 2. Firewall Hardening
+sudo ufw status
+sudo ufw allow OpenSSH
+sudo ufw enable
+sudo ufw status
+
+# 3. SSH Hardening
+# On local machine: ssh-keygen -t rsa -b 4096
+# On local machine: ssh-copy-id testuser@SERVER_IP
+# On server:
+sudo nano /etc/ssh/sshd_config
+sudo systemctl restart sshd
+
+# 4. Intrusion Prevention
+sudo apt update
+sudo apt install fail2ban -y
+sudo systemctl start fail2ban
+sudo systemctl enable fail2ban
+sudo fail2ban-client status sshd

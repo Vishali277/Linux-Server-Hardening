@@ -1,0 +1,5 @@
+Before Hardening:
+The server was exposed with an inactive firewall, and allowed direct root login and password-based SSH access, making it vulnerable to brute-force attacks.
+
+After Hardening:
+The server is hardened with an active UFW firewall allowing only SSH traffic. SSH access is restricted to key-based authentication for a non-root user, and Fail2Ban is installed to automatically block malicious IPs.
